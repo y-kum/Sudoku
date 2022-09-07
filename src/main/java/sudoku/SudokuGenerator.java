@@ -19,8 +19,7 @@ public class SudokuGenerator {
 			copy.makeMove(r, 0, notUsedValidValues.get(randomValue), true);
 			notUsedValidValues.remove(randomValue);
 		}
-		
-		//Bottleneck here need to improve this so that way 16x16 puzzles can be generated
+
 		backtrackSudokuSolver(0, 0, copy);
 		
 		int numberOfValuesToKeep = (int)(0.22222*(copy.getNumRows()*copy.getNumRows()));
@@ -37,16 +36,7 @@ public class SudokuGenerator {
 		
 		return puzzle;
 	}
-	
-	/**
-	 * Solves the sudoku puzzle
-	 * Pre-cond: r = 0,c = 0
-	 * Post-cond: solved puzzle
-	 * @param r: the current row
-	 * @param c: the current column
-	 * @return valid move or not or done
-	 * Responses: Erroneous data 
-	 */
+
     private boolean backtrackSudokuSolver(int r,int c,SudokuPuzzle puzzle) {
     	//If the move is not valid return false
 		if(!puzzle.inRange(r,c)) {
